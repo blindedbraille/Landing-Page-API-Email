@@ -230,6 +230,8 @@ subscriptionForm.addEventListener("submit", async (event) => {
 });
 
 const CAROUSEL_DURATION = 6000;
+const WORKS_SHUFFLE_DURATION = 800;
+const WORKS_SHUFFLE_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
 const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function createCarousel({
@@ -403,11 +405,102 @@ const worksSlides = worksTrack.querySelectorAll(".works-carousel__item");
 const worksControls = document.querySelector("#selected-works .works-carousel__controls");
 const worksControlsRow = worksControls.closest(".works-carousel");
 const worksViewport = document.querySelector("#selected-works");
+let worksPositions = new Map();
+
+function captureWorksPositions() {
+  return new Map(
+    [...worksSlides].map((slide) => {
+      const { left, top, right, width, height } = slide.getBoundingClientRect();
+      return [
+        slide,
+        {
+          rect: { left, top, right, width, height },
+          opacity: Number.parseFloat(getComputedStyle(slide).opacity),
+        },
+      ];
+    }),
+  );
+}
+
+function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direction) {
+  const viewportBounds = worksViewport.getBoundingClientRect();
+  const restingTransform = "translateX(0px) translateY(0px) scale(1, 1)";
+
+  worksSlides.forEach((slide) => {
+    const previous = previousPositions.get(slide);
+    const next = nextPositions.get(slide);
+    if (!previous || !next || !next.rect.width || !next.rect.height) {
+      return;
+    }
+
+    const dx = previous.rect.left - next.rect.left;
+    const dy = previous.rect.top - next.rect.top;
+    const scaleX = previous.rect.width / next.rect.width;
+    const scaleY = previous.rect.height / next.rect.height;
+    const startTransform =
+      `translateX(${dx}px) translateY(${dy}px) scale(${scaleX}, ${scaleY})`;
+    const keyframes =
+      slide === wrapSlide
+        ? [
+            {
+              offset: 0,
+              transform: startTransform,
+              transformOrigin: "top left",
+              opacity: previous.opacity,
+            },
+            {
+              offset: 0.45,
+              transform:
+                `translateX(${direction > 0
+                  ? viewportBounds.left - next.rect.right
+                  : viewportBounds.right - next.rect.left}px) ` +
+                "translateY(0px) scale(1, 1)",
+              transformOrigin: "top left",
+              opacity: 0,
+            },
+            {
+              offset: 0.55,
+              transform: restingTransform,
+              transformOrigin: "top left",
+              opacity: 0,
+            },
+            {
+              offset: 1,
+              transform: restingTransform,
+              transformOrigin: "top left",
+              opacity: next.opacity,
+            },
+          ]
+        : [
+            {
+              transform: startTransform,
+              transformOrigin: "top left",
+              opacity: previous.opacity,
+            },
+            {
+              transform: restingTransform,
+              transformOrigin: "top left",
+              opacity: next.opacity,
+            },
+          ];
+
+    const animation = slide.animate(keyframes, {
+      duration: WORKS_SHUFFLE_DURATION,
+      easing: WORKS_SHUFFLE_EASING,
+      fill: "both",
+    });
+    animation.onfinish = () => animation.cancel();
+  });
+}
 
 function arrangeSelectedWorks(activeIndex, direction = 1) {
   const count = worksSlides.length;
   if (count < 3) return;
 
+  const previousPositions = worksPositions;
+  const previousOrder = [...worksTrack.children];
+  const wrapSlide =
+    direction > 0 ? previousOrder[0] : previousOrder[previousOrder.length - 1];
   const oldTransform = getComputedStyle(worksTrack).transform;
   worksTrack.classList.add("is-reordering");
   const previousIndex = (activeIndex - 1 + count) % count;
@@ -422,11 +515,16 @@ function arrangeSelectedWorks(activeIndex, direction = 1) {
   worksTrack.style.transform =
     oldTransform === "none" ? "translate3d(0, 0, 0)" : oldTransform;
   void worksTrack.offsetWidth;
+  worksTrack.dataset.direction = direction > 0 ? "next" : "previous";
+  centerCurrentWork();
+  void worksTrack.offsetWidth;
   worksTrack.classList.remove("is-reordering");
-  window.requestAnimationFrame(() => {
-    worksTrack.dataset.direction = direction > 0 ? "next" : "previous";
-    centerCurrentWork();
-  });
+
+  const nextPositions = captureWorksPositions();
+  if (previousPositions.size === count && !reducedMotionPreference.matches) {
+    animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direction);
+  }
+  worksPositions = nextPositions;
 }
 
 function centerCurrentWork() {
@@ -463,7 +561,16 @@ createCarousel({
 let worksLayoutFrame;
 window.addEventListener("resize", () => {
   window.cancelAnimationFrame(worksLayoutFrame);
-  worksLayoutFrame = window.requestAnimationFrame(centerCurrentWork);
+  worksLayoutFrame = window.requestAnimationFrame(() => {
+    worksSlides.forEach((slide) => {
+      slide.getAnimations().forEach((animation) => animation.cancel());
+    });
+    worksTrack.classList.add("is-reordering");
+    centerCurrentWork();
+    void worksTrack.offsetWidth;
+    worksTrack.classList.remove("is-reordering");
+    worksPositions = captureWorksPositions();
+  });
 });
 
 const cursorGlow = document.querySelector(".cursor-glow");
