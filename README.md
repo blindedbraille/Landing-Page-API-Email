@@ -69,8 +69,7 @@ form-gallery/
 ├── index.html
 ├── styles.css
 ├── script.js
-├── assets/
-│   └── images/
+├── images/
 ├── README.md
 └── .gitignore
 ```
