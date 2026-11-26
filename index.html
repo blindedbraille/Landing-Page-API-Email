@@ -7,15 +7,363 @@
   <meta name="description" content="FORM is an independent space for sculpture and experimental art.">
   <title>FORM.</title>
   <link rel="stylesheet" href="styles.css">
-  <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
   </script>
   <script type="text/javascript">
-    emailjs.init({
-      publicKey: "jkxfEbCXjUl1okQPG"
+    emailjs.init({< html lang = "en" > <head>
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+          <meta name="description" content="FORM is an independent space for sculpture and experimental art.">
+            <title>FORM.</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+                <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+                  <link rel="stylesheet" href="styles.css">
+                    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+                      emailjs.init({
+                        publicKey: "jkxfEbCXjUl1okQPG"
     });
   </script>
-  <script src="script.js" defer></script>
+  <script src="script.js" defer=""></script>
+</head>
+
+<body>
+  <div class="cursor-glow" aria-hidden="true" style="left: 685.637px; top: 240.016px;"></div>
+  <!-- 01. Header -->
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="wordmark wordmark--header" href="#top" aria-label="FORM home">FORM.</a>
+      <a class="button button--header" href="#subscription" data-subscription-open="">Subscribe</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 02. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <h1 id="hero-title">Be among the first to see.</h1>
+        <p class="hero__intro">
+          Discover After the Light. Subscribe for exclusive access to advance tickets.
+        </p>
+        <div class="hero__actions">
+          <a class="button" href="#subscription" data-subscription-open="">Subscribe</a>
+          <a class="button" href="#selected-works">Explore Event</a>
+        </div>
+      </div>
+
+      <div class="hero__artwork">
+        <figure class="artwork artwork--hero" aria-hidden="true">
+          <img class="artwork__image" src="images/veil-of-light.jpg"
+            alt="Sample sculptural form with a curved, reflective surface" fetchpriority="high">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Veil of Light</span>
+            <span class="artwork__artist">Iris Voss, 2026</span>
+          </figcaption>
+        </figure>
+
+        <figure class="artwork artwork--hero is-active" aria-hidden="false" aria-current="true">
+          <img class="artwork__image" src="images/residual-bodies.jpg" alt="Sample installation with geometric forms">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Residual Bodies</span>
+            <span class="artwork__artist">Mara Klien, 2026</span>
+          </figcaption>
+        </figure>
+
+        <figure class="artwork artwork--hero" aria-hidden="true">
+          <img class="artwork__image" src="images/rising-sun.jpg" alt="Sample landscape with a rising sun">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Rising Sun</span>
+            <span class="artwork__artist">Noa Sato, 2026</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero__caption-strip" aria-live="polite" aria-atomic="true">
+          <div class="carousel-controls hero__carousel-controls" role="group" aria-label="Featured artwork controls"
+            style="--indicator-area: 96px;">
+            <button class="icon-button" type="button" aria-label="Previous featured artwork">
+              <span aria-hidden="true">←</span>
+            </button>
+            <p class="carousel-status" aria-live="polite" aria-atomic="true" aria-hidden="true"
+              style="--indicator-offset: 0px; --indicator-width: 14px; --carousel-duration: 6000ms;">
+              <span class="visually-hidden"></span>
+            </p>
+            <p class="carousel-status is-active" aria-live="polite" aria-atomic="true" aria-hidden="false"
+              style="--indicator-offset: 20px; --indicator-width: 56px; --carousel-duration: 6000ms;">
+              <span class="visually-hidden">Slide 2 of 3: Residual Bodies, Mara Klien, 2026</span>
+            </p>
+            <p class="carousel-status" aria-live="polite" aria-atomic="true" aria-hidden="true"
+              style="--indicator-offset: 82px; --indicator-width: 14px; --carousel-duration: 6000ms;">
+              <span class="visually-hidden"></span>
+            </p>
+            <button class="icon-button" type="button" aria-label="Next featured artwork">
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="hero__caption-copy">
+            <span class="artwork__title">Residual Bodies</span>
+            <span class="artwork__artist">Mara Klien, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Selected Works -->
+    <section class="selected-works section" id="selected-works" aria-labelledby="selected-works-title">
+      <div class="section-heading">
+        <h2 id="selected-works-title">Selected works.</h2>
+      </div>
+
+      <ul class="works-carousel__list is-positioned" data-direction="next"
+        style="transform: translate3d(-194.594px, 0px, 0px);">
+
+
+
+
+
+        <li class="works-carousel__item works-carousel__item--preview" aria-label="Sample work 2 of 3">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <img class="artwork__image" src="images/between-matter.jpg"
+                alt="Sample three-dimensional installation of translucent forms and shadows" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Between Matter</span>
+                <span class="artwork__artist">Iris Voss, 2023</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+        <li class="works-carousel__item works-carousel__item--current" aria-label="Sample work 3 of 3"
+          aria-current="true">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <img class="artwork__image" src="images/quiet-tension.jpg"
+                alt="Sample sculptural object with a dark, irregular silhouette" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Quiet Tension <span class="sample-label">(sample)</span></span>
+                <span class="artwork__artist">Mara Klien, 2022</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+        <li class="works-carousel__item works-carousel__item--preview" aria-label="Sample work 1 of 3">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <img class="artwork__image" src="images/soft-geometry.jpg"
+                alt="Sample abstract sculpture made from layered, softly curved material" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Soft Geometry</span>
+                <span class="artwork__artist">Elian Park, 2024</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+      </ul>
+
+      <div class="works-carousel" style="--selected-controls-offset: 57px;">
+        <div class="works-carousel__controls carousel-controls" role="group" aria-label="Selected works controls"
+          style="--indicator-area: 96px;">
+          <button class="icon-button" type="button" aria-label="Previous selected work">
+            <span aria-hidden="true">←</span>
+          </button>
+          <p class="carousel-status" aria-live="polite" aria-atomic="true" aria-hidden="true"
+            style="--indicator-offset: 0px; --indicator-width: 14px; --carousel-duration: 6000ms;">
+            <span class="visually-hidden"></span>
+          </p>
+          <p class="carousel-status" aria-live="polite" aria-atomic="true" aria-hidden="true"
+            style="--indicator-offset: 20px; --indicator-width: 14px; --carousel-duration: 6000ms;">
+            <span class="visually-hidden"></span>
+          </p>
+          <p class="carousel-status is-active" aria-live="polite" aria-atomic="true" aria-hidden="false"
+            style="--indicator-offset: 40px; --indicator-width: 56px; --carousel-duration: 6000ms;">
+            <span class="visually-hidden">Slide 3 of 3: Quiet Tension (sample), Mara Klien, 2022</span>
+          </p>
+          <button class="icon-button" type="button" aria-label="Next selected work">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 04. Featured Artists -->
+    <section class="artists section" id="artists" aria-labelledby="artists-title">
+      <div class="artists__image">
+        <figure class="artwork artwork--artists">
+          <img class="artwork__image" src="images/sample-art.jpg"
+            alt="Sample sculptural installation composed of stacked organic shapes" loading="lazy">
+          <img class="artwork__image artwork__image--preview" src="images/sample-art.jpg" alt="" loading="lazy"
+            aria-hidden="true">
+        </figure>
+      </div>
+
+      <div class="artists__content">
+        <h2 id="artists-title">New ways of seeing.</h2>
+
+        <div class="artist-list">
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="images/veil-of-light.jpg"
+              data-artist-alt="Abstract light painting by Iris Voss">
+              <span class="artist-list__name">Iris Voss</span>
+              <span class="artist-list__discipline">Light Photography / Berlin</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Iris Voss transforms light into sculptural forms, exploring
+              the fragile boundary between the visible and the intangible.
+            </p>
+          </details>
+
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="images/rising-sun.jpg"
+              data-artist-alt="Atmospheric light painting by Noa Sato">
+              <span class="artist-list__name">Noa Sato</span>
+              <span class="artist-list__discipline">Light Photography / Kyoto</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Noa Sato captures fleeting moments of illumination,
+              revealing the quiet relationship between light, time, and memory.
+            </p>
+          </details>
+
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="images/residual-bodies.jpg"
+              data-artist-alt="Expressive light trails by Mara Klein">
+              <span class="artist-list__name">Mara Klein</span>
+              <span class="artist-list__discipline">Light Photography / Amsterdam</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Mara Klein traces movement through darkness, creating
+              luminous compositions that exist somewhere between
+              presence and disappearance.
+            </p>
+          </details>
+
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="images/between-matter.jpg"
+              data-artist-alt="Geometric light painting by Elian Park">
+              <span class="artist-list__name">Elian Park</span>
+              <span class="artist-list__discipline">Light Photography / Seoul</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Elian Park uses light as a visual language, constructing
+              abstract geometries that challenge our perception of
+              space, depth, and colour.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. About FORM -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">An open field.</h2>
+      <p class="about__description">
+        FORM is an independent space for digital art and experimental expression. We bring together artists working at
+        the edges of image, material and possibility.
+      </p>
+      <details class="about__disclosure">
+        <summary class="text-link">About FORM</summary>
+        <div class="about__mission" id="about-mission" aria-hidden="true">
+          <div class="about__mission-inner">
+            <h3 class="about__mission-title">Art without boundaries.</h3>
+            <div class="about__mission-copy">
+              <p>
+                Through a series of pop-up galleries across Toronto, FORM. brings experimental art into unconventional
+                spaces. Our exhibitions explore the intersection of photography, light, digital media, sculpture, and
+                immersive installations.
+              </p>
+              <p>
+                Our mission is to challenge traditional gallery experiences, provide a platform for emerging artists,
+                and encourage new ways of experiencing art.
+              </p>
+              <p>
+                We believe art should never stand still. Neither should the spaces that hold it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- 06. Newsletter -->
+    <section class="newsletter section" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter__content">
+        <h2 id="newsletter-title">Stay in the loop.</h2>
+        <p class="newsletter__intro">
+          Experience After the Light before anyone else. Subscribe to FORM for exclusive access 24 hours before the
+          exhibition opens to the public.
+        </p>
+      </div>
+
+      <form class="newsletter-form" id="newsletter-form" method="post">
+        <label class="newsletter-form__label" for="newsletter-email">Email address</label>
+        <div class="newsletter-form__fields">
+          <input class="newsletter-form__input" id="newsletter-email" name="email" type="email" autocomplete="email"
+            placeholder="Your email address" aria-describedby="newsletter-email-help newsletter-form-feedback"
+            required="">
+          <button class="button newsletter-form__submit" type="submit">Subscribe</button>
+        </div>
+        <p class="newsletter-form__help" id="newsletter-email-help">
+          Sign up for occasional exhibition and gallery updates. By subscribing, you agree to our Privacy Policy.
+          Unsubscribe anytime.
+        </p>
+        <p class="newsletter-form__feedback" id="newsletter-form-feedback" role="status" aria-live="polite"
+          aria-atomic="true"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- 07. Footer -->
+  <footer class="site-footer">
+    <a class="wordmark wordmark--footer" href="#top" aria-label="FORM home">FORM.</a>
+    <nav class="footer-navigation" aria-label="Footer navigation">
+      <ul class="footer-navigation__list">
+        <li><a href="#selected-works">Exhibitions</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#newsletter">Subscribe</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__copyright">© 2026 FORM.</p>
+  </footer>
+
+  <!-- 08. Subscription Modal -->
+  <dialog id="subscription" class="subscription-modal" aria-labelledby="subscription-title" data-state="default">
+    <button class="subscription-modal__close" type="button" aria-label="Close subscription form">×</button>
+    <p class="subscription-modal__eyebrow">EXCLUSIVE FIRST LOOK</p>
+    <h2 class="subscription-modal__title" id="subscription-title">See What Others Haven't.</h2>
+    <form class="subscription-form" id="subscription-form" method="post">
+      <div class="subscription-form__field">
+        <label class="subscription-form__label" for="subscription-name">Name (optional)</label>
+        <input class="subscription-form__input" id="subscription-name" type="text" name="name" autocomplete="name"
+          placeholder="Your name">
+      </div>
+      <div class="subscription-form__field">
+        <label class="subscription-form__label" for="subscription-email">Email address*</label>
+        <input class="subscription-form__input" id="subscription-email" type="email" name="email" autocomplete="email"
+          placeholder="Your email address" aria-describedby="subscription-feedback" required="">
+      </div>
+      <button class="button subscription-form__submit" type="submit">Subscribe to FORM</button>
+    </form>
+    <p class="subscription-modal__feedback" id="subscription-feedback" aria-live="polite" aria-atomic="true"></p>
+    <p class="subscription-modal__supporting-text">
+      Only art, never noise. Unsubscribe at any time. Your details stay private.
+    </p>
+  </dialog>
+
+
+</body>
+
+</html>
+publicKey: "jkxfEbCXjUl1okQPG"
+});
+</script>
+<script src="script.js" defer></script>
 </head>
 
 <body>
@@ -34,7 +382,8 @@
       <div class="hero__content">
         <h1 id="hero-title">After the Light.</h1>
         <p class="hero__intro">
-          An upcoming digital exhibition light painting. Subscribe for a exclusive 24 hours access before it opens to the public.
+          An upcoming digital exhibition light painting. Subscribe for a exclusive 24 hours access before it opens to
+          the public.
         </p>
         <div class="hero__actions">
           <a class="button" href="#subscription" data-subscription-open>Subscribe</a>
@@ -176,8 +525,8 @@
           <!-- Sample artwork; replace with assets/images/artist-feature.jpg. -->
           <img class="artwork__image" src="assets/images/artist-feature.jpg"
             alt="Sample sculptural installation composed of stacked organic shapes" loading="lazy">
-          <img class="artwork__image artwork__image--preview" src="assets/images/artist-feature.jpg"
-            alt="" loading="lazy" aria-hidden="true">
+          <img class="artwork__image artwork__image--preview" src="assets/images/artist-feature.jpg" alt=""
+            loading="lazy" aria-hidden="true">
           <figcaption class="artwork__caption">
             <span class="artwork__title">Studio study <span class="sample-label">(sample)</span></span>
           </figcaption>
