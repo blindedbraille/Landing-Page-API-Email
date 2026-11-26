@@ -70,6 +70,7 @@ form-gallery/
 ├── styles.css
 ├── script.js
 ├── images/
+│   └── *.jpg
 ├── README.md
 └── .gitignore
 ```
