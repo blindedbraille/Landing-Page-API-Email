@@ -1,4 +1,4 @@
-/* 1. Variables and Reset */
+/* 01. Design Tokens */
 :root {
   color-scheme: dark;
   --color-background: #090a10;
@@ -19,6 +19,7 @@
   --transition: 180ms ease;
 }
 
+/* 02. Global Styles */
 * {
   box-sizing: border-box;
 }
@@ -34,7 +35,7 @@ body {
   overflow-x: hidden;
   background: var(--color-background);
   color: var(--color-text);
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-family: Manrope, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.55;
@@ -104,7 +105,7 @@ ul {
   outline-offset: 4px;
 }
 
-/* 2. Global Typography */
+/* 03. Typography */
 h1,
 h2,
 p,
@@ -149,7 +150,7 @@ h2 {
   padding-inline: var(--page-gutter);
 }
 
-/* 3. Buttons */
+/* 04. Buttons */
 .button {
   display: inline-flex;
   min-height: 2.875rem;
@@ -213,7 +214,7 @@ h2 {
   background: rgba(170, 185, 245, 0.2);
 }
 
-/* 4. Header and Navigation */
+/* 05. Header */
 .site-header {
   position: sticky;
   z-index: 5;
@@ -249,21 +250,6 @@ h2 {
   font-size: 1.35rem;
 }
 
-.footer-navigation__list {
-  display: flex;
-  align-items: center;
-}
-
-.footer-navigation a {
-  color: #c3c2cd;
-  font-size: 0.82rem;
-  transition: color var(--transition);
-}
-
-.footer-navigation a:hover {
-  color: var(--color-text);
-}
-
 .button--header {
   justify-self: end;
   min-height: 2.5rem;
@@ -271,18 +257,7 @@ h2 {
   font-size: 0.78rem;
 }
 
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.carousel-status {
-  color: var(--color-muted);
-  font-size: 0.75rem;
-}
-
-/* 5. Hero */
+/* 06. Hero */
 .cursor-glow {
   position: fixed;
   z-index: 999;
@@ -442,7 +417,7 @@ h2 {
   width: fit-content;
 }
 
-/* 6. Selected Works */
+/* 07. Selected Works */
 .selected-works {
   position: relative;
   padding-top: clamp(3rem, 5vw, 5.5rem);
@@ -524,7 +499,7 @@ h2 {
   transform: translateY(100%);
 }
 
-/* 7. Artists */
+/* 08. Featured Artists */
 .artists {
   display: grid;
   max-width: calc(var(--content-width) + var(--page-gutter) * 2);
@@ -641,7 +616,7 @@ h2 {
   font-size: 0.88rem;
 }
 
-/* 8. About */
+/* 09. About FORM */
 .about {
   display: grid;
   max-width: calc(var(--content-width) + var(--page-gutter) * 2);
@@ -706,7 +681,7 @@ h2 {
   transform: rotate(45deg);
 }
 
-/* 9. Newsletter */
+/* 10. Newsletter */
 .newsletter {
   display: grid;
   max-width: calc(var(--content-width) + var(--page-gutter) * 2);
@@ -807,7 +782,7 @@ h2 {
   color: var(--color-accent-strong);
 }
 
-/* 10. Footer */
+/* 11. Footer */
 .site-footer {
   display: grid;
   max-width: calc(var(--content-width) + var(--page-gutter) * 2);
@@ -832,13 +807,21 @@ h2 {
 }
 
 .footer-navigation__list {
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.7rem clamp(1rem, 2.2vw, 2rem);
 }
 
 .footer-navigation a {
+  color: #c3c2cd;
   font-size: 0.75rem;
+  transition: color var(--transition);
+}
+
+.footer-navigation a:hover {
+  color: var(--color-text);
 }
 
 .site-footer__copyright {
@@ -847,7 +830,7 @@ h2 {
   font-size: 0.7rem;
 }
 
-/* 11. Responsive Media Queries */
+/* 12. Responsive Design */
 @media (max-width: 1024px) {
   :root {
     --page-gutter: clamp(1.5rem, 4vw, 2.75rem);
@@ -1149,7 +1132,7 @@ h2 {
   }
 }
 
-/* 12. Subscription modals */
+/* 13. Subscription Modal */
 
 #subscription.subscription-modal {
   position: fixed;
@@ -1344,7 +1327,6 @@ h2 {
   text-align: center;
 }
 
-/* Reuse the existing feedback element as the confirmation message panel. */
 #subscription.subscription-modal[open][data-state="success"],
 #subscription.subscription-modal[open][data-state="verified"] {
   display: flex;
@@ -1400,7 +1382,6 @@ h2 {
   margin-top: 18px;
 }
 
-/* The existing error state is set on invalid input and submission errors. */
 #subscription.subscription-modal[data-state="error"] {
   animation: subscription-modal-shake 300ms ease-in-out;
 }
@@ -1490,7 +1471,7 @@ h2 {
   }
 }
 
-/* Hero carousel: overlapping slides crossfade while the caption row stays aligned with its controls. */
+/* 14. Hero Carousel */
 .hero__artwork {
   display: grid;
   min-width: 0;
@@ -1580,7 +1561,7 @@ h2 {
   font-size: 0.78rem;
 }
 
-/* Selected Works: center the active item with clipped side previews and a separate control row. */
+/* 15. Selected Works Carousel */
 #selected-works .works-carousel__list {
   width: max-content;
   max-width: none;
@@ -1653,7 +1634,18 @@ h2 {
   transform: none;
 }
 
-/* Carousel Controls */
+/* 16. Carousel Controls and Animations */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.carousel-status {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
 .hero .carousel-controls,
 #selected-works .carousel-controls {
   position: relative;
@@ -1816,6 +1808,7 @@ h2 {
   }
 }
 
+/* 17. Responsive Design Refinements */
 @media (max-width: 768px) {
   .hero__artwork {
     min-height: 23rem;
@@ -1877,6 +1870,7 @@ h2 {
   }
 }
 
+/* 18. Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .hero__artwork > .artwork--hero,
   #selected-works .works-carousel__list.is-positioned,
@@ -1899,7 +1893,7 @@ h2 {
   }
 }
 
-/* Glass finish */
+/* 19. Glass Effects */
 .icon-button,
 .artist-list__icon,
 .hero .carousel-controls > button,

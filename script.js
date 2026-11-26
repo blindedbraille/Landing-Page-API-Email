@@ -1,3 +1,4 @@
+// 01. Configuration
 const subscriptionDialog = document.querySelector("#subscription");
 const subscriptionOpeners = document.querySelectorAll("[data-subscription-open]");
 const subscriptionCloseButton = subscriptionDialog.querySelector(
@@ -22,12 +23,14 @@ let previousScrollY = 0;
 let isSubmitting = false;
 let isNewsletterSubmitting = false;
 
+// 02. EmailJS
 // Both signup forms use the same EmailJS template.
 function sendSubscriptionEmail(name, email) {
   const templateParams = { name, email };
   return emailjs.send("service_6nt5tnp", "template_bk1wqio", templateParams);
 }
 
+// 03. Subscription Modal
 function setFeedback(message, state = "default") {
   subscriptionDialog.dataset.state = state;
   subscriptionFeedback.textContent = message;
@@ -99,6 +102,7 @@ function closeModal() {
   }
 }
 
+// 04. Form Validation and Feedback
 subscriptionOpeners.forEach((opener) => {
   opener.addEventListener("click", (event) => {
     event.preventDefault();
@@ -229,6 +233,7 @@ subscriptionForm.addEventListener("submit", async (event) => {
   }
 });
 
+// 05. Carousel Configuration
 const CAROUSEL_DURATION = 6000;
 const WORKS_SHUFFLE_DURATION = 800;
 const WORKS_SHUFFLE_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
@@ -380,6 +385,7 @@ function createCarousel({
 
 }
 
+// 06. Hero Carousel
 const heroSlides = document.querySelectorAll(".hero__artwork > .artwork--hero");
 const heroCaptionTitle = document.querySelector(".hero__caption-copy .artwork__title");
 const heroCaptionArtist = document.querySelector(".hero__caption-copy .artwork__artist");
@@ -400,11 +406,13 @@ createCarousel({
   onChange: updateHeroCaption,
 });
 
+// 07. Selected Works Carousel
 const worksTrack = document.querySelector("#selected-works > .works-carousel__list");
 const worksSlides = worksTrack.querySelectorAll(".works-carousel__item");
 const worksControls = document.querySelector("#selected-works .works-carousel__controls");
 const worksControlsRow = worksControls.closest(".works-carousel");
 const worksViewport = document.querySelector("#selected-works");
+
 let worksPositions = new Map();
 
 function captureWorksPositions() {
@@ -573,6 +581,7 @@ window.addEventListener("resize", () => {
   });
 });
 
+// 08. Cursor Glow
 const cursorGlow = document.querySelector(".cursor-glow");
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 
@@ -593,6 +602,7 @@ if (cursorGlow && finePointer.matches) {
   });
 }
 
+// 09. Artist Interactions
 const artistsFrame = document.querySelector(".artwork--artists");
 const artistBaseImage = artistsFrame?.querySelector(".artwork__image:not(.artwork__image--preview)");
 const artistPreviewImage = artistsFrame?.querySelector(".artwork__image--preview");
@@ -645,6 +655,7 @@ function selectArtist(summary) {
   });
 }
 
+// 10. Artist Event Binding
 artistSummaries.forEach((summary) => {
   summary.addEventListener("pointerenter", () => previewArtist(summary));
   summary.addEventListener("pointerleave", restoreSelectedArtist);
