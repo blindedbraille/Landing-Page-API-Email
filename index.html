@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FORM is an independent space for sculpture and experimental art.">
+  <title>FORM.</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    emailjs.init({
+      publicKey: "jkxfEbCXjUl1okQPG"
+    });
+  </script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="site-header__inner">
+      <a class="wordmark wordmark--header" href="#top" aria-label="FORM home">FORM.</a>
+      <a class="button button--header" href="#subscription" data-subscription-open>Subscribe</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <h1 id="hero-title">After the Light.</h1>
+        <p class="hero__intro">
+          An upcoming digital exhibition light painting. Subscribe for a exclusive 24 hours access before it opens to the public.
+        </p>
+        <div class="hero__actions">
+          <a class="button" href="#subscription" data-subscription-open>Subscribe</a>
+          <a class="button" href="#selected-works">Explore Event</a>
+        </div>
+      </div>
+
+      <div class="hero__artwork">
+        <figure class="artwork artwork--hero">
+          <!-- Sample artwork #1; replace with assets/images/hero-sculpture.jpg. -->
+          <img class="artwork__image" src="images/[insert-your-image-here].jpg"
+            alt="Sample sculptural form with a curved, reflective surface" fetchpriority="high">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Veil of Light</span>
+            <span class="artwork__artist">Iris Voss, 2026</span>
+          </figcaption>
+        </figure>
+
+        <!-- Sample artwork #2; replace with assets/images/hero-installation.jpg. -->
+        <figure class="artwork artwork--hero">
+          <img class="artwork__image" src="images/[insert-your-image-here].jpg" alt="[insert alt text]">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Residual Bodies</span>
+            <span class="artwork__artist">Mara Klien, 2026</span>
+          </figcaption>
+        </figure>
+
+        <!-- Sample artwork #3; replace with assets/images/hero-installation.jpg. -->
+        <figure class="artwork artwork--hero">
+          <img class="artwork__image" src="images/[insert-your-image-here].jpg" alt="[insert alt text]">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Rising Sun</span>
+            <span class="artwork__artist">Noa Sato, 2026</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero__caption-strip" aria-live="polite" aria-atomic="true">
+          <div class="carousel-controls hero__carousel-controls" role="group" aria-label="Featured artwork controls">
+            <button class="icon-button" type="button" aria-label="Previous featured artwork">
+              <span aria-hidden="true">&larr;</span>
+            </button>
+            <p class="carousel-status" aria-live="polite" aria-atomic="true">
+              <span class="visually-hidden">Featured artwork</span>
+            </p>
+            <p class="carousel-status" aria-live="polite" aria-atomic="true">
+              <span class="visually-hidden">Featured artwork</span>
+            </p>
+            <p class="carousel-status" aria-live="polite" aria-atomic="true">
+              <span class="visually-hidden">Featured artwork</span>
+            </p>
+            <button class="icon-button" type="button" aria-label="Next featured artwork">
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+          <div class="hero__caption-copy">
+            <span class="artwork__title">Veil of Light</span>
+            <span class="artwork__artist">Iris Voss, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected works -->
+    <section class="selected-works section" id="selected-works" aria-labelledby="selected-works-title">
+      <div class="section-heading">
+        <h2 id="selected-works-title">Selected works.</h2>
+      </div>
+
+      <ul class="works-carousel__list">
+        <li class="works-carousel__item works-carousel__item--preview" aria-label="Sample work 1 of 3">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <!-- Sample artwork #1; replace with assets/images/selected-work-01.jpg. -->
+              <img class="artwork__image" src="assets/images/selected-work-01.jpg"
+                alt="Sample abstract sculpture made from layered, softly curved material" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Soft Geometry</span>
+                <span class="artwork__artist">Elian Park, 2024</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+
+        <li class="works-carousel__item works-carousel__item--current" aria-label="Sample work 2 of 3">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <!-- Sample artwork #2; replace with assets/images/selected-work-02.jpg. -->
+              <img class="artwork__image" src="assets/images/selected-work-02.jpg"
+                alt="Sample three-dimensional installation of translucent forms and shadows" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Between Matter</span>
+                <span class="artwork__artist">Iris Voss, 2023</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+
+        <li class="works-carousel__item works-carousel__item--preview" aria-label="Sample work 3 of 3">
+          <article class="artwork-card">
+            <figure class="artwork">
+              <!-- Sample artwork #3; replace with assets/images/selected-work-03.jpg. -->
+              <img class="artwork__image" src="assets/images/selected-work-03.jpg"
+                alt="Sample sculptural object with a dark, irregular silhouette" loading="lazy">
+              <figcaption class="artwork__caption">
+                <span class="artwork__title">Quiet Tension <span class="sample-label">(sample)</span></span>
+                <span class="artwork__artist">Mara Klien, 2022</span>
+              </figcaption>
+            </figure>
+          </article>
+        </li>
+      </ul>
+
+      <div class="works-carousel">
+        <div class="works-carousel__controls carousel-controls" role="group" aria-label="Selected works controls">
+          <button class="icon-button" type="button" aria-label="Previous selected work">
+            <span aria-hidden="true">&larr;</span>
+          </button>
+          <p class="carousel-status" aria-live="polite" aria-atomic="true">
+            <span class="visually-hidden">Selected works </span>
+          </p>
+          <p class="carousel-status" aria-live="polite" aria-atomic="true">
+            <span class="visually-hidden">Selected works </span>
+          </p>
+          <p class="carousel-status" aria-live="polite" aria-atomic="true">
+            <span class="visually-hidden">Selected works </span>
+          </p>
+          <button class="icon-button" type="button" aria-label="Next selected work">
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Artists -->
+    <section class="artists section" id="artists" aria-labelledby="artists-title">
+      <div class="artists__image">
+        <figure class="artwork artwork--artists">
+          <!-- Sample artwork; replace with assets/images/artist-feature.jpg. -->
+          <img class="artwork__image" src="assets/images/artist-feature.jpg"
+            alt="Sample sculptural installation composed of stacked organic shapes" loading="lazy">
+          <img class="artwork__image artwork__image--preview" src="assets/images/artist-feature.jpg"
+            alt="" loading="lazy" aria-hidden="true">
+          <figcaption class="artwork__caption">
+            <span class="artwork__title">Studio study <span class="sample-label">(sample)</span></span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="artists__content">
+        <h2 id="artists-title">New ways of seeing.</h2>
+
+        <!-- Sample artist names and biographies; replace with confirmed artist details. -->
+        <div class="artist-list">
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="assets/images/selected-work-02.jpg"
+              data-artist-alt="Sculptural artwork by Iris Voss">
+              <span class="artist-list__name">Iris Voss</span>
+              <span class="artist-list__discipline">Sculpture / Berlin</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Iris Voss explores how everyday materials can change our sense of scale and space.
+            </p>
+          </details>
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="assets/images/selected-work-03.jpg"
+              data-artist-alt="Simulated artwork by Noa Sato">
+              <span class="artist-list__name">Noa Sato</span>
+              <span class="artist-list__discipline">Simulation / Kyoto</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Noa Sato creates immersive arrangements shaped by light, movement, and memory.
+            </p>
+          </details>
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="assets/images/artist-feature.jpg"
+              data-artist-alt="Moving-image artwork by Mara Klein">
+              <span class="artist-list__name">Mara Klein</span>
+              <span class="artist-list__discipline">Moving Image / Amsterdam</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Mara Klein creates objects that sit at the intersection of tradition and innovation.
+            </p>
+          </details>
+          <details class="artist-list__item">
+            <summary class="artist-list__summary" data-artist-image="assets/images/selected-work-01.jpg"
+              data-artist-alt="Generative artwork by Elian Park">
+              <span class="artist-list__name">Elian Park</span>
+              <span class="artist-list__discipline">Generative Art / Seoul</span>
+              <span class="artist-list__icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="artist-list__biography">
+              Elian Park creates generative works that explore the relationship between code and creativity.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about section" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">An open field.</h2>
+      <p class="about__description">
+        FORM is an independent space for digital art and experimental expression. We bring together artists working at
+        the edges of image, material and possibility.
+      </p>
+      <details class="about__disclosure">
+        <summary class="text-link">About FORM</summary>
+      </details>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter section" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="newsletter__content">
+        <h2 id="newsletter-title">See After the Light before it opens.</h2>
+        <p class="newsletter__intro">
+          Subscribe to FORM for an email preview of After the Light, our upcomingdigital exhibition, 24 hours before it
+          opens.
+        </p>
+      </div>
+
+      <form class="newsletter-form" id="newsletter-form" method="post">
+        <label class="newsletter-form__label" for="newsletter-email">Email address</label>
+        <div class="newsletter-form__fields">
+          <input class="newsletter-form__input" id="newsletter-email" name="email" type="email" autocomplete="email"
+            placeholder="Your email address" aria-describedby="newsletter-email-help newsletter-form-feedback" required>
+          <button class="button newsletter-form__submit" type="submit">Subscribe</button>
+        </div>
+        <p class="newsletter-form__help" id="newsletter-email-help">
+          Sign up for occasional exhibition and gallery updates. By subscribing, you agree to our Privacy Policy.
+          Unsubscribe anytime.
+        </p>
+        <p class="newsletter-form__feedback" id="newsletter-form-feedback" role="status" aria-live="polite"
+          aria-atomic="true"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a class="wordmark wordmark--footer" href="#top" aria-label="FORM home">FORM.</a>
+    <nav class="footer-navigation" aria-label="Footer navigation">
+      <ul class="footer-navigation__list">
+        <li><a href="#selected-works">Exhibitions</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#newsletter">Subscribe</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__copyright">© 2026 FORM.</p>
+  </footer>
+
+  <!-- Subscription modal -->
+  <dialog id="subscription" class="subscription-modal" aria-labelledby="subscription-title" data-state="default">
+    <button class="subscription-modal__close" type="button" aria-label="Close subscription form">×</button>
+    <p class="subscription-modal__eyebrow">EXHIBITION ANNOUNCEMENTS</p>
+    <h2 class="subscription-modal__title" id="subscription-title">A different way of seeing.</h2>
+    <p class="subscription-modal__exhibition-copy">
+      Get an email preview of After the Light 24 hours before it opens.
+    </p>
+    <form class="subscription-form" id="subscription-form" method="post">
+      <div class="subscription-form__field">
+        <label class="subscription-form__label" for="subscription-name">Name (optional)</label>
+        <input class="subscription-form__input" id="subscription-name" type="text" name="name" autocomplete="name"
+          placeholder="Your name">
+      </div>
+      <div class="subscription-form__field">
+        <label class="subscription-form__label" for="subscription-email">Email address *</label>
+        <input class="subscription-form__input" id="subscription-email" type="email" name="email" autocomplete="email"
+          placeholder="alex@gmail.com" aria-describedby="subscription-feedback" required>
+      </div>
+      <button class="button subscription-form__submit" type="submit">Subscribe to FORM</button>
+    </form>
+    <p class="subscription-modal__feedback" id="subscription-feedback" aria-live="polite" aria-atomic="true"></p>
+    <p class="subscription-modal__supporting-text">
+      Only art, never noise. Unsubscribe at any time. Your details stay private.
+    </p>
+  </dialog>
+</body>
+
+</html>
