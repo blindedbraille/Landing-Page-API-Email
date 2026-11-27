@@ -1523,8 +1523,6 @@ h2 {
 .hero__carousel-controls {
   z-index: 3;
   position: relative;
-  grid-column: 1;
-  align-self: center;
 }
 
 .hero__caption-strip {
@@ -1533,10 +1531,10 @@ h2 {
   bottom: 0;
   left: 0;
   z-index: 2;
-  display: grid;
+  display: flex;
   min-height: 4.75rem;
-  grid-template-columns: minmax(12.5rem, 1fr) auto;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 1.5rem;
   border-top: 1px solid rgba(192, 202, 241, 0.12);
@@ -1547,7 +1545,6 @@ h2 {
 }
 
 .hero__caption-copy {
-  grid-column: 2;
   min-width: 0;
   text-align: right;
 }
@@ -1816,7 +1813,6 @@ h2 {
 
   .hero__caption-strip {
     min-height: 5.25rem;
-    grid-template-columns: minmax(12.5rem, 1fr) minmax(7rem, 1fr);
   }
 
   #selected-works .works-carousel__list {
@@ -1843,21 +1839,19 @@ h2 {
 
   .hero__caption-strip {
     min-height: 7.25rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    align-items: end;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     gap: 0.15rem;
     padding: 0.7rem 0.8rem;
   }
 
   .hero__carousel-controls {
-    grid-column: 1;
-    grid-row: 1;
+    align-self: flex-start;
   }
 
   .hero__caption-copy {
-    grid-column: 1;
-    grid-row: 2;
+    align-self: flex-end;
   }
 
   #selected-works .artwork-card .artwork__caption {
