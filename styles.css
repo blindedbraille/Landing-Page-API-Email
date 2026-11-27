@@ -1759,12 +1759,13 @@ h2 {
   .hero {
     min-height: 0;
     grid-template-columns: 1fr;
-    padding-top: 6rem;
+    padding-top: 0;
   }
 
   .hero__content {
-    min-height: 22rem;
-    padding: 3.75rem var(--page-gutter) 3rem;
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 3.5rem var(--page-gutter) 2rem;
   }
 
   .hero h1 {
@@ -1820,29 +1821,25 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .hero__content {
-    min-height: 20rem;
-  }
-
   .hero__artwork {
     min-height: 19rem;
   }
 
   .hero__caption-strip {
-    min-height: 7.25rem;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    gap: 0.15rem;
-    padding: 0.7rem 0.8rem;
+    min-height: 5.25rem;
+    gap: 0.5rem;
+    padding: 0.55rem 0.5rem;
   }
 
   .hero__carousel-controls {
-    align-self: flex-start;
+    align-self: center;
+    flex: 0 0 auto;
   }
 
   .hero__caption-copy {
-    align-self: flex-end;
+    align-self: center;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   #selected-works .artwork-card .artwork__caption {
