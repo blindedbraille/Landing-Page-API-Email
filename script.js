@@ -245,6 +245,7 @@ function createCarousel({
   activeClass,
   inactiveClass,
   hideInactiveSlides = false,
+  onBeforeChange,
   onChange,
 }) {
   const buttons = controls.querySelectorAll(":scope > button");
@@ -344,6 +345,7 @@ function createCarousel({
   }
 
   function move(direction, isManualChange = false) {
+    onBeforeChange?.();
     activeIndex = (activeIndex + direction + slides.length) % slides.length;
     manualRestartActive = isManualChange;
     lastDirection = direction;
@@ -412,17 +414,41 @@ const worksSlides = worksTrack.querySelectorAll(".works-carousel__item");
 const worksControls = document.querySelector("#selected-works .works-carousel__controls");
 const worksControlsRow = worksControls.closest(".works-carousel");
 const worksViewport = document.querySelector("#selected-works");
+const worksImages = [...worksSlides].map((slide) =>
+  slide.querySelector(".artwork__image"),
+);
+worksImages.forEach((image) => {
+  image.loading = "eager";
+});
 
 let worksPositions = new Map();
+let worksImagesDecoded = false;
+const worksImagesReady = Promise.all(
+  worksImages.map((image) => image.decode()),
+).then(
+  () => {
+    worksImagesDecoded = true;
+  },
+  (error) => {
+    console.error("Selected Works image decoding failed:", error);
+  },
+);
 
 function captureWorksPositions() {
+  const viewportLeft = worksViewport.getBoundingClientRect().left;
+
   return new Map(
     [...worksSlides].map((slide) => {
-      const { left, top, right, width, height } = slide.getBoundingClientRect();
+      const { left, right, width, height } = slide.getBoundingClientRect();
       return [
         slide,
         {
-          rect: { left, top, right, width, height },
+          rect: {
+            left: left - viewportLeft,
+            right: right - viewportLeft,
+            width,
+            height,
+          },
           opacity: Number.parseFloat(getComputedStyle(slide).opacity),
         },
       ];
@@ -432,7 +458,9 @@ function captureWorksPositions() {
 
 function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direction) {
   const viewportBounds = worksViewport.getBoundingClientRect();
-  const restingTransform = "translateX(0px) translateY(0px) scale(1, 1)";
+  const viewportRight = viewportBounds.width;
+  const restingTransform = "translate3d(0, 0, 0) scale(1, 1)";
+  const animations = [];
 
   worksSlides.forEach((slide) => {
     const previous = previousPositions.get(slide);
@@ -442,11 +470,10 @@ function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direct
     }
 
     const dx = previous.rect.left - next.rect.left;
-    const dy = previous.rect.top - next.rect.top;
     const scaleX = previous.rect.width / next.rect.width;
     const scaleY = previous.rect.height / next.rect.height;
     const startTransform =
-      `translateX(${dx}px) translateY(${dy}px) scale(${scaleX}, ${scaleY})`;
+      `translate3d(${dx}px, 0, 0) scale(${scaleX}, ${scaleY})`;
     const keyframes =
       slide === wrapSlide
         ? [
@@ -459,10 +486,10 @@ function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direct
             {
               offset: 0.45,
               transform:
-                `translateX(${direction > 0
-                  ? viewportBounds.left - next.rect.right
-                  : viewportBounds.right - next.rect.left}px) ` +
-                "translateY(0px) scale(1, 1)",
+                `translate3d(${direction > 0
+                  ? -next.rect.right
+                  : viewportRight - next.rect.left}px, 0, 0) ` +
+                "scale(1, 1)",
               transformOrigin: "top left",
               opacity: 0,
             },
@@ -492,12 +519,40 @@ function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direct
             },
           ];
 
+    slide.style.willChange = "transform, opacity";
     const animation = slide.animate(keyframes, {
       duration: WORKS_SHUFFLE_DURATION,
       easing: WORKS_SHUFFLE_EASING,
       fill: "both",
     });
-    animation.onfinish = () => animation.cancel();
+    animation.pause();
+    animation.onfinish = () => {
+      animation.cancel();
+      slide.style.willChange = "";
+    };
+    animations.push({ animation, slide });
+  });
+
+  worksImagesReady.then(() => {
+    animations.forEach(({ animation, slide }) => {
+      if (animation.playState !== "paused") {
+        return;
+      }
+
+      if (worksImagesDecoded) {
+        animation.play();
+      } else {
+        animation.cancel();
+        slide.style.willChange = "";
+      }
+    });
+  });
+}
+
+function cancelWorksAnimations() {
+  worksSlides.forEach((slide) => {
+    slide.getAnimations().forEach((animation) => animation.cancel());
+    slide.style.willChange = "";
   });
 }
 
@@ -506,11 +561,11 @@ function arrangeSelectedWorks(activeIndex, direction = 1) {
   if (count < 3) return;
 
   const previousPositions = worksPositions;
+  const shouldAnimate =
+    previousPositions.size === count && !reducedMotionPreference.matches;
   const previousOrder = [...worksTrack.children];
   const wrapSlide =
     direction > 0 ? previousOrder[0] : previousOrder[previousOrder.length - 1];
-  const oldTransform = getComputedStyle(worksTrack).transform;
-  worksTrack.classList.add("is-reordering");
   const previousIndex = (activeIndex - 1 + count) % count;
   const nextIndex = (activeIndex + 1) % count;
   const orderedSlides = [
@@ -520,16 +575,11 @@ function arrangeSelectedWorks(activeIndex, direction = 1) {
   ];
 
   orderedSlides.forEach((slide) => worksTrack.appendChild(slide));
-  worksTrack.style.transform =
-    oldTransform === "none" ? "translate3d(0, 0, 0)" : oldTransform;
-  void worksTrack.offsetWidth;
   worksTrack.dataset.direction = direction > 0 ? "next" : "previous";
   centerCurrentWork();
-  void worksTrack.offsetWidth;
-  worksTrack.classList.remove("is-reordering");
 
   const nextPositions = captureWorksPositions();
-  if (previousPositions.size === count && !reducedMotionPreference.matches) {
+  if (shouldAnimate) {
     animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direction);
   }
   worksPositions = nextPositions;
@@ -563,6 +613,10 @@ createCarousel({
   controls: worksControls,
   activeClass: "works-carousel__item--current",
   inactiveClass: "works-carousel__item--preview",
+  onBeforeChange: () => {
+    worksPositions = captureWorksPositions();
+    cancelWorksAnimations();
+  },
   onChange: arrangeSelectedWorks,
 });
 
@@ -570,13 +624,8 @@ let worksLayoutFrame;
 window.addEventListener("resize", () => {
   window.cancelAnimationFrame(worksLayoutFrame);
   worksLayoutFrame = window.requestAnimationFrame(() => {
-    worksSlides.forEach((slide) => {
-      slide.getAnimations().forEach((animation) => animation.cancel());
-    });
-    worksTrack.classList.add("is-reordering");
+    cancelWorksAnimations();
     centerCurrentWork();
-    void worksTrack.offsetWidth;
-    worksTrack.classList.remove("is-reordering");
     worksPositions = captureWorksPositions();
   });
 });

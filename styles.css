@@ -1568,16 +1568,6 @@ h2 {
   width: max-content;
   max-width: none;
   min-width: 100%;
-  will-change: transform;
-}
-
-#selected-works .works-carousel__list.is-positioned {
-  transition: transform 480ms cubic-bezier(0.22, 0.72, 0.25, 1);
-}
-
-#selected-works .works-carousel__list.is-reordering,
-#selected-works .works-carousel__list.is-reordering.is-positioned {
-  transition: none;
 }
 
 #selected-works .works-carousel__item {
@@ -1874,7 +1864,6 @@ h2 {
 /* 18. Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .hero__artwork > .artwork--hero,
-  #selected-works .works-carousel__list.is-positioned,
   .artwork--artists .artwork__image,
   .cursor-glow {
     transition-duration: 0.01ms;
