@@ -1033,43 +1033,9 @@ h2 {
     font-size: clamp(2.35rem, 10.5vw, 3.35rem);
   }
 
-  .hero {
-    min-height: 0;
-    grid-template-columns: 1fr;
-    padding-top: 6rem;
-  }
-
-  .hero__content {
-    min-height: 20rem;
-    padding: 3.75rem var(--page-gutter) 3rem;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.3rem, 9.5vw, 4.75rem);
-  }
-
   .hero__actions .button {
     min-height: 2.8rem;
     padding-inline: 1.1rem;
-  }
-
-  .hero__intro {
-    max-width: 28rem;
-    margin-top: 1.15rem;
-    font-size: 0.95rem;
-  }
-
-  .hero__actions {
-    margin-top: 1.5rem;
-  }
-
-  .artwork--hero {
-    min-height: inherit;
-  }
-
-  .hero__carousel-controls {
-    bottom: 4.25rem;
-    left: 1rem;
   }
 
   .artwork__caption {
@@ -1789,6 +1755,48 @@ h2 {
 }
 
 /* 17. Responsive Design Refinements */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 0;
+    grid-template-columns: 1fr;
+    padding-top: 6rem;
+  }
+
+  .hero__content {
+    min-height: 22rem;
+    padding: 3.75rem var(--page-gutter) 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.3rem, 9.5vw, 4.75rem);
+  }
+
+  .hero__intro {
+    max-width: 28rem;
+    margin-top: 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .hero__actions {
+    margin-top: 1.5rem;
+  }
+
+  .hero__artwork {
+    position: relative;
+    inset: auto;
+    min-height: clamp(21rem, 72vw, 34rem);
+  }
+
+  .artwork--hero {
+    min-height: inherit;
+  }
+
+  .hero__carousel-controls {
+    bottom: 4.25rem;
+    left: 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .hero__caption-strip {
     min-height: 5.25rem;
@@ -1812,9 +1820,11 @@ h2 {
 }
 
 @media (max-width: 480px) {
+  .hero__content {
+    min-height: 20rem;
+  }
+
   .hero__artwork {
-    position: relative;
-    inset: auto;
     min-height: 19rem;
   }
 
