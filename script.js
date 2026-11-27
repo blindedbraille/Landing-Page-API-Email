@@ -459,7 +459,7 @@ function captureWorksPositions() {
 function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direction) {
   const viewportBounds = worksViewport.getBoundingClientRect();
   const viewportRight = viewportBounds.width;
-  const restingTransform = "translate3d(0, 0, 0) scale(1, 1)";
+  const restingTransform = "translateX(0px) scale(1, 1)";
   const animations = [];
 
   worksSlides.forEach((slide) => {
@@ -469,52 +469,54 @@ function animateWorksShuffle(previousPositions, nextPositions, wrapSlide, direct
       return;
     }
 
-    const dx = previous.rect.left - next.rect.left;
+    const previousCenterX = previous.rect.left + previous.rect.width / 2;
+    const nextCenterX = next.rect.left + next.rect.width / 2;
+    const dx = previousCenterX - nextCenterX;
     const scaleX = previous.rect.width / next.rect.width;
     const scaleY = previous.rect.height / next.rect.height;
     const startTransform =
-      `translate3d(${dx}px, 0, 0) scale(${scaleX}, ${scaleY})`;
+      `translateX(${dx}px) scale(${scaleX}, ${scaleY})`;
     const keyframes =
       slide === wrapSlide
         ? [
             {
               offset: 0,
               transform: startTransform,
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: previous.opacity,
             },
             {
               offset: 0.45,
               transform:
-                `translate3d(${direction > 0
+                `translateX(${direction > 0
                   ? -next.rect.right
-                  : viewportRight - next.rect.left}px, 0, 0) ` +
+                  : viewportRight - next.rect.left}px) ` +
                 "scale(1, 1)",
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: 0,
             },
             {
               offset: 0.55,
               transform: restingTransform,
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: 0,
             },
             {
               offset: 1,
               transform: restingTransform,
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: next.opacity,
             },
           ]
         : [
             {
               transform: startTransform,
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: previous.opacity,
             },
             {
               transform: restingTransform,
-              transformOrigin: "top left",
+              transformOrigin: "center center",
               opacity: next.opacity,
             },
           ];
