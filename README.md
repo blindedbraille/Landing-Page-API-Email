@@ -6,9 +6,6 @@ A responsive static website for FORM., an independent experimental art gallery c
 
 FORM. is a fictional gallery concept focused on presenting contemporary and experimental art in unconventional spaces across Toronto.
 
-## After the Light
-
-*After the Light* explores light, movement, space, and perception through experimental light painting and long-exposure photography.
 
 ## Features
 
@@ -38,16 +35,6 @@ Landing-Page-API-Email/
 ├── README.md
 └── .gitignore
 ```
-
-## Run Locally
-
-Open the project folder in Visual Studio Code and run `index.html` with Live Server, or start a local server from the project directory:
-
-```sh
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
 
 ## Live Website
 
