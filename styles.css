@@ -1473,6 +1473,11 @@ h2 {
 
 /* 14. Hero Carousel */
 .hero__artwork {
+  position: absolute;
+  top: -4rem;
+  right: 0;
+  bottom: 0;
+  left: 50%;
   display: grid;
   min-width: 0;
   min-height: 23rem;
@@ -1808,6 +1813,8 @@ h2 {
 /* 17. Responsive Design Refinements */
 @media (max-width: 768px) {
   .hero__artwork {
+    position: relative;
+    inset: auto;
     min-height: 23rem;
   }
 
